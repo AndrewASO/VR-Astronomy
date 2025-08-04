@@ -10,18 +10,20 @@ class Star:
 
         #Initial variables required for calculations
         self.ra = float(df_row['ra'])
-        self.dec = None
-        self.pmra = None
-        self.pmdec = None
-        self.dist = None
-        self.mag = None
-        self.ci = None
-        self.rv = None
+        self.dec = float(df_row['dec'])
+        self.pmra = float(df_row['pmra'])
+        self.pmdec = float(df_row['pmdec'])
+        self.dist = float(df_row['dist'])
 
+        #Visual Variables
+        self.mag = float(df_row['mag'])
+        self.ci = float(df_row['ci'])
+
+        #Fallback Variables
 
         #Identification Variables
-        self.proper = None
-        self.con = None
+        self.proper = str(df_row['proper'])
+        self.con = str(df_row['con'])
 
         #Variables that'll be calculated
         self.calc_ci = None
@@ -29,10 +31,10 @@ class Star:
         self.calc_size = None
         self.calc_luminosity = None
 
-    def setVariable(self):
+    def setVar(self):
         pass
 
-    def returnVariable(self):
+    def returnVar(self):
         pass
 
 
