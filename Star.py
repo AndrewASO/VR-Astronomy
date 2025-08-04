@@ -8,22 +8,24 @@ class Star:
     #Should be initiated with a DF ? Or just a row taken from the DF when grabbing the data from 
     def __init__(self, df_row):
 
+        #All variables that would be extracted from the csv given would be for epoch & equinox 2000.0
+
         #Initial variables required for calculations
-        self.ra = float(df_row['ra'])
-        self.dec = float(df_row['dec'])
-        self.pmra = float(df_row['pmra'])
-        self.pmdec = float(df_row['pmdec'])
-        self.dist = float(df_row['dist'])
+        self.ra = float(df_row['ra'])           #Right Ascension
+        self.dec = float(df_row['dec'])         #Declination
+        self.pmra = float(df_row['pmra'])       #Proper Motion Right Ascension
+        self.pmdec = float(df_row['pmdec'])     #Proper Motion Declination 
+        self.dist = float(df_row['dist'])       #Distance
 
         #Visual Variables
-        self.mag = float(df_row['mag'])
-        self.ci = float(df_row['ci'])
+        self.mag = float(df_row['mag'])         #Apparent Visual Magnitude
+        self.ci = float(df_row['ci'])           #Color Index
 
         #Fallback Variables
 
         #Identification Variables
-        self.proper = str(df_row['proper'])
-        self.con = str(df_row['con'])
+        self.proper = str(df_row['proper'])     #Proper Name
+        self.con = str(df_row['con']) or None   #Constellation
 
         #Variables that'll be calculated
         self.calc_ci = None
