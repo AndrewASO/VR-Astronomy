@@ -1,6 +1,6 @@
 
 
-class Calculations:
+class StarCalculations:
 
     def __init__(self):
         pass
