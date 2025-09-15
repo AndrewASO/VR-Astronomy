@@ -10,6 +10,7 @@ a huge difference in the time when storing the additional values or if it would 
 All of the variables that aren't calculated will be from the epoch & equinox 2000.0
 '''
 
+import pandas as pd
 
 class Star:
 
@@ -27,20 +28,20 @@ class Star:
     def __init__(self, df_row):
 
         #Initial variables required for calculations
-        self.ra = float(df_row['ra'])           #Right Ascension
-        self.dec = float(df_row['dec'])         #Declination
-        self.pmra = float(df_row['pmra'])       #Proper Motion Right Ascension
-        self.pmdec = float(df_row['pmdec'])     #Proper Motion Declination 
-        self.dist = float(df_row['dist'])       #Distance
+        self.ra = float(df_row['ra'])                                               #Right Ascension
+        self.dec = float(df_row['dec'])                                             #Declination
+        self.pmra = float(df_row['pmra'])                                           #Proper Motion Right Ascension
+        self.pmdec = float(df_row['pmdec'])                                         #Proper Motion Declination 
+        self.dist = float(df_row['dist'])                                           #Distance
 
         #Visual Variables
-        self.mag = float(df_row['mag'])         #Apparent Visual Magnitude
-        self.ci = float(df_row['ci'])           #Color Index
+        self.mag = float(df_row['mag'])                                             #Apparent Visual Magnitude
+        self.ci = float(df_row['ci'])                                               #Color Index
 
         #Identification Variables
-        self.id = int(df_row['id'])             #Database Primary Key
-        self.proper = str(df_row['proper'])     #Proper Name
-        self.con = str(df_row['con']) or None   #Constellation
+        self.id = int(df_row.get("id")) if pd.notna(df_row.get("id")) else None     #Database Primary Key
+        self.proper = str(df_row['proper'])                                         #Proper Name
+        self.con = str(df_row['con'])                                               #Constellation
 
         #Fallback Variables
 
@@ -50,10 +51,14 @@ class Star:
         self.calc_size = None
         self.calc_luminosity = None
 
-    def setVar(self):
+    def testPrint(self):
+        print("This is a test print")
+        #self.con = str(df_row['con']) if pd.notna(df_row['con']) and df_row['con'] != ''else None
+
+    def setVar(self, var, val):
         pass
 
-    def returnVar(self):
+    def returnVar(self, var):
         pass
 
     '''
