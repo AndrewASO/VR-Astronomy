@@ -1,11 +1,12 @@
 
+'''
+This will test the Star class creation and assure that everything is running correctly during its initial creation.
+'''
+
 import unittest
 import pandas as pd
 import numpy as np
-import sys
-import os
 from VRAstronomy.Star import Star
-from VRAstronomy.test import Test
 
 class TestStar(unittest.TestCase):
 
@@ -21,13 +22,12 @@ class TestStar(unittest.TestCase):
             'dist': 100.0,
             'proper': 'Test Star',
             'con': 'TES',
+            'id': 1                 #Optional and might not be needed later on, was only here for testing 
+            #if this line of code worked || self.id = int(df_row.get("id")) if pd.notna(df_row.get("id")) else None 
         })
 
     def testStarCreation(self):
-        #self.setUp()
         star = Star(self.mock_row)
-        #star.testPrint()
-
         
         #Testing core properties
         self.assertEqual(star.ra, 10.0)
@@ -41,11 +41,6 @@ class TestStar(unittest.TestCase):
         self.assertEqual(star.dist, 100.0)
         self.assertEqual(star.proper, 'Test Star')
         self.assertEqual(star.con, 'TES')
-        
-
-    def test(self):
-        testPrint = Test()
-        testPrint.testPrint()
 
 
 if __name__ == '__main__':
